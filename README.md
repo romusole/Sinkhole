@@ -1,7 +1,7 @@
 
 # Sinkhole: Escape from the Abyss
 
-A simple game engine made in Java for uni course
+A game engine made in Java for CTU Programing in Java course
 
 
 

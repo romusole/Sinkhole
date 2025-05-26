@@ -4,6 +4,7 @@ import cz.cvut.fel.pjv.gamestates.Playing;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static cz.cvut.fel.pjv.utils.Constants.ANIMATION_SPEED;
 import static cz.cvut.fel.pjv.utils.Constants.Directions.*;
 import static cz.cvut.fel.pjv.utils.Constants.EnemyConstants.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -87,6 +88,10 @@ class EnemyTest {
         assertTrue(enemy.getCurrentHealth() > 0);
 
         enemy.hurt(enemy.getMaxHealth());
+        for (int i = 0; i < getSpriteAmount(DOG, DIE) * ANIMATION_SPEED; i++) {
+            enemy.update(mockLevelData, mockPlayer);
+        }
+
         assertEquals(DIE, enemy.getState());
         assertFalse(enemy.isActive());
     }
@@ -106,6 +111,9 @@ class EnemyTest {
         // Test if the enemy is active
         assertTrue(enemy.isActive());
         enemy.changeState(DIE);
+        for (int i = 0; i < getSpriteAmount(DOG, DIE) * ANIMATION_SPEED; i++) {
+            enemy.update(mockLevelData, mockPlayer);
+        }
         assertFalse(enemy.isActive());
     }
 
